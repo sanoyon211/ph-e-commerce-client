@@ -28,7 +28,7 @@ const ProductCard = ({ product }) => {
         <h2 className='text-xl font-bold text-red-800'>{product.price} Tk</h2>
       </div>
 
-      <Link href={`/products/productId`}>
+      <Link href={`/products/${product._id}`}>
         {' '}
         <Button variant="outline" className={'w-full'}>
           View
