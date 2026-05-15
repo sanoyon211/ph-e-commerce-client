@@ -5,6 +5,12 @@ import { Link, Button } from '@heroui/react';
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const menuItems = [
+    { name: 'All Products', path: '/products' },
+    { name: 'Add Product', path: '/product/add' },
+    { name: 'About', path: '/about' },
+  ];
+
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
       <header className="flex h-16 items-center justify-between px-6">
@@ -43,27 +49,26 @@ function Navbar() {
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
-          <li>
-            <Link href="#">Features</Link>
-          </li>
-          <li>
-            <Link href="#">Pricing</Link>
-          </li>
+          {menuItems.map(item => (
+            <li key={item.path}>
+              <Link href={item.path}>
+                {item.name}
+              </Link>
+            </li>
+          ))}
         </ul>
+        
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
           <ul className="flex flex-col gap-2 p-4">
-            <li>
-              <Link href="#" className="block py-2">
-                Features
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="block py-2">
-                Pricing
-              </Link>
-            </li>
+            {menuItems.map(item => (
+              <li key={item.path}>
+                <Link href={item.path} onClick={() => setIsMenuOpen(false)}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       )}
