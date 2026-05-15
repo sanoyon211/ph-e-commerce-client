@@ -28,13 +28,13 @@ const ProductCard = ({ product }) => {
         <h2 className='text-xl font-bold text-red-800'>{product.price} Tk</h2>
       </div>
 
-      {/* <Link href={`/all-photos/${product.id}`}>
+      <Link href={`/products/productId`}>
         {' '}
         <Button variant="outline" className={'w-full'}>
           View
         </Button>
       </Link>
-         */}
+        
     </Card>
   );
 };

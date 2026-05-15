@@ -45,7 +45,9 @@ function Navbar() {
             </svg>
           </button>
           <div>
-            <h2 className='text-2xl font-bold'>PH E-COMMERCE</h2>
+            <Link href="/" className="no-underline">
+              <h2 className='text-2xl font-bold'>PH E-COMMERCE</h2>
+            </Link> 
           </div>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
