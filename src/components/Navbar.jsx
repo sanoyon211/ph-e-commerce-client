@@ -7,7 +7,7 @@ function Navbar() {
 
   const menuItems = [
     { name: 'All Products', path: '/products' },
-    { name: 'Add Product', path: '/product/add' },
+    { name: 'Add Product', path: '/products/add' },
     { name: 'About', path: '/about' },
   ];
 
