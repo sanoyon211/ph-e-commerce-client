@@ -1,5 +1,6 @@
 import { getAllProducts } from '@/lib/product/data';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 // 'params' ke await korte hobe Next.js er latest version e
@@ -77,9 +78,11 @@ const ProductDetails = async ({ params }) => {
               <button className="flex-1 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-lg active:scale-95">
                 Add to Cart
               </button>
-              <button className="flex-1 bg-gray-50 text-gray-900 border border-gray-300 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors active:scale-95">
-                Add to Wishlist
-              </button>
+              <Link href={`/products/${product._id}/edit`}>
+                <button className="flex-1 bg-gray-50 text-gray-900 border border-gray-300 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-colors active:scale-95">
+                  Edit
+                </button>
+              </Link>
             </div>
 
             {/* Extra Features Icons... (Same as before) */}
