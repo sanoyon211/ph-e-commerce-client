@@ -27,3 +27,18 @@ export const addProduct = async formdata => {
   revalidatePath('/products');
   return data;
 };
+
+
+export const deleteProduct = async (id) => {
+  const res = await fetch(`http://localhost:8000/products/${id}`, {
+    method: 'DELETE',
+  });
+  const data = await res.json();
+  //   console.log(res.ok);
+
+  if (!res.ok) {
+    return;
+  }
+  revalidatePath('/products');
+  return data;
+};

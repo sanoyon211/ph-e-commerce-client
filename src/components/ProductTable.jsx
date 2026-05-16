@@ -1,5 +1,6 @@
 import { getAllProducts } from '@/lib/product/data';
 import { Table , Button} from '@heroui/react';
+import { DeleteModal } from '@/components/DeleteModal';
 
 export const ProductTable = async () => {
   const products = await getAllProducts();
@@ -20,8 +21,8 @@ export const ProductTable = async () => {
                 <Table.Cell>{product.price}</Table.Cell>
                 <Table.Cell>{product.stock}</Table.Cell>
                 <Table.Cell>
-                  <Button >Edit</Button>
-                  <Button variant="danger" className='ml-2'>Delete</Button>
+                  <Button className="mr-2"j>Edit</Button>
+                  <DeleteModal productId={product._id} />
                 </Table.Cell>
               </Table.Row>
             ))}
