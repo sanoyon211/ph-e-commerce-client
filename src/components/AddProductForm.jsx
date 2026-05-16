@@ -1,3 +1,5 @@
+'use client';
+import { addProduct } from '@/lib/product/action';
 import {
   Button,
   Description,
@@ -7,40 +9,44 @@ import {
   Label,
   TextField,
 } from '@heroui/react';
+import { useRouter } from 'next/navigation';
 
 const AddProductForm = () => {
+  const router = useRouter();
+  const handleSubmit = async formData => {
+    const data = await addProduct(formData);
+    if (data.insertedId) {
+      router.push('/products');
+    }
+  };
   return (
-    <div className='flex items-center justify-center w-full'>
-      <Form className="flex w-96 flex-col gap-4 border border-gray-400 p-6 rounded-lg shadow-lg">
-        <TextField isRequired name="title" type="text">
+    <div className="flex w-full items-center justify-center">
+      <Form
+        action={handleSubmit}
+        className="flex w-96 flex-col gap-4 border p-5 rounded-md"
+      >
+        <TextField name="title" type="text">
           <Label>Product Name</Label>
-          <Input placeholder="Enter product name" />
-          <FieldError />
+          <Input placeholder="Enter Product Name" />
         </TextField>
-        <TextField isRequired name="description" type="text">
+        <TextField name="description" type="text">
           <Label>Product Description</Label>
-          <Input placeholder="Enter product description" />
-          <FieldError />
+          <Input placeholder="Enter Product Description" />
         </TextField>
-        <TextField isRequired name="price" type="number">
+        <TextField name="price" type="number">
           <Label>Product Price</Label>
-          <Input placeholder="Enter product price" />
-          <FieldError />
+          <Input placeholder="Enter Product Price" />
         </TextField>
-        <TextField isRequired name="image" type="url">
+        <TextField name="image" type="url">
           <Label>Product Image</Label>
-          <Input placeholder="Enter product image URL" />
-          <FieldError />
+          <Input placeholder="Enter Product Image" />
         </TextField>
-        <TextField isRequired name="stock" type="number">
+        <TextField name="stock" type="number">
           <Label>Product Stock</Label>
-          <Input placeholder="Enter product stock" />
-          <FieldError />
+          <Input placeholder="Enter Product Stock" />
         </TextField>
-
-
         <div className="flex gap-2">
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Add Product</Button>
           <Button type="reset" variant="secondary">
             Reset
           </Button>
